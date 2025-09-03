@@ -14,11 +14,11 @@ public class Function {
                 |--------------------------|--------------------------|
                 |  1º - Calculadora        |   2º - Aulas             |
                 |--------------------------|--------------------------|
-                |  3º - Criador de Select  |   4º - Jogo da Velha     |
+                |  3º - Criador de Select  |   4º - Sorteio           |
                 |--------------------------|--------------------------|
-                |  5º - Sair do console    |   6º - Sobre o Autor     |
+                |  5º - Sobre a SafeClass  |   6º - Sobre o Autor     |
                 |--------------------------|--------------------------|
-                |  7º - Sobre a SafeClass  |##########################|
+                |  7º - Sair do console    |##########################|
                 |__________________________|__________________________|
                 Digite o número da sua ação: 
                 """);
@@ -30,7 +30,7 @@ public class Function {
         if (acao == 1){
             chamarMenuCalculadora();
         } else if (acao == 2) {
-
+            ChamarMenuAulas();
         } else if (acao == 3) {
 
         } else if (acao == 4) {
@@ -40,7 +40,8 @@ public class Function {
         } else if (acao == 6) {
 
         } else if (acao == 7) {
-
+            limparTela();
+            EncerrarConsole();
         }
     }
     void limparTela(){
@@ -214,4 +215,82 @@ public class Function {
             chamarMenuCalculadora();
         }
     }
+    void EncerrarConsole(){
+        System.out.printf("""
+                      ____  _          _                 _                            _    _               \s
+                     / __ \\| |        (_)               | |                          | |  | |              \s
+                    | |  | | |__  _ __ _  __ _  __ _  __| | ___    _ __   ___  _ __  | |  | |___  __ _ _ __\s
+                    | |  | | '_ \\| '__| |/ _` |/ _` |/ _` |/ _ \\  | '_ \\ / _ \\| '__| | |  | / __|/ _` | '__|
+                    | |__| | |_) | |  | | (_| | (_| | (_| | (_) | | |_) | (_) | |    | |__| \\__ \\ (_| | |  \s
+                     \\____/|_.__/|_|  |_|\\__, |\\__,_|\\__,_|\\___/  | .__/ \\___/|_|     \\____/|___/\\__,_|_|  \s
+                                          __/ |                   | |                                      \s
+                                         |___/                    |_|                                      \s
+                """);
+    }
+    void ChamarMenuAulas(){
+        limparTela();
+        System.out.printf("""
+                _______________________________________________________
+                |                         Aulas                       |
+                |--------------------------|--------------------------|
+                |  1º - Váriaveis          |   2º - If / Else         |
+                |--------------------------|--------------------------|
+                |  3º - While / For        |   4º - Vetor[]           |
+                |--------------------------|--------------------------|
+                |  5º - Listas             |   6º - Operações Math    |
+                |--------------------------|--------------------------|
+                |  7º - Números Aletórios  |   8º - Mais opções       |
+                |__________________________|__________________________|
+                Digite o número da sua operação: 
+                """);
+        Integer acao = leitor.nextInt();
+        while (acao < 1 || acao > 8){
+            System.out.println("Operação Invalída. Tente Novamente:");
+            acao = leitor.nextInt();
+        }
+        if (acao == 1){
+            AulaVariavel();
+        } else if (acao == 2) {
+
+        } else if (acao == 3) {
+
+        } else if (acao == 4) {
+
+        } else if (acao == 5) {
+
+        } else if (acao == 6) {
+
+        } else if (acao == 7) {
+
+        } else {
+
+        }
+    }
+    void AulaVariavel(){
+        System.out.println("Bem vindo a Aula sobre Varíavel");
+        System.out.printf("""
+                O que é uma Variavél: É um espaço nomeado na memória de um computador que armazena dados 
+                que podem ser alterados durante a execução de um programa.
+                Difêrencia das variavéis em Js para Java: No javascript para criar uma variavél é só ulti
+                zar o var e pelo o valor inserido a varíavel virava uma tipagem de dado específica(Ex: St
+                ring,Boolean,Int,Float) no Java você faz esse processo antes de você declarar uma váriavel
+                você precisa passar a tipagem dela(Ex: int Minha_primeira_Variavel = 0)
+                Tipos de Varíaveis no Java:
+                    int -> Número inteiros de -2147483648 a 2147483647
+                    String -> Texto "Hello World"
+                    double -> Números Racionais Ex: 0.25 (64 bits)
+                    float -> Números Racionais Ex: 0.5 (32 bits)
+                    boolean -> True ou False
+                    character -> Uma Letra Ex: "A"
+                Nós também temos outro tipo de váriavel chamada Wrappers no qual só ultilizadas para criar
+                objetos:
+                    Integer   ->
+                    String    ->
+                    Double    ->
+                    Float     ->
+                    Boolean   ->
+                    Character ->
+                """);
+    }
+
 }
