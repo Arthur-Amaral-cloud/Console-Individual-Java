@@ -32,7 +32,7 @@ public class Function {
         } else if (acao == 2) {
             ChamarMenuAulas();
         } else if (acao == 3) {
-
+            CriadordeSelect();
         } else if (acao == 4) {
 
         } else if (acao == 5) {
@@ -248,10 +248,11 @@ public class Function {
             System.out.println("Operação Invalída. Tente Novamente:");
             acao = leitor.nextInt();
         }
+        limparTela();
         if (acao == 1){
             AulaVariavel();
         } else if (acao == 2) {
-
+            AulaifElse();
         } else if (acao == 3) {
 
         } else if (acao == 4) {
@@ -267,6 +268,18 @@ public class Function {
         }
     }
     void AulaVariavel(){
+        int int_primitivo = 30;
+        Integer int_wrapper = 50;
+        String string_wrapper = "Hello World";
+        double double_primitivo = 5.55;
+        Double double_wrapper = 6.61;
+        float float_primitvo = 40.502f;
+        Float float_wrapper = 41.2f;
+        boolean bollean_primitivo = false;
+        Boolean bollean_wrapper = true;
+        char char_primitivo = 'A';
+        Character char_wrapper = 'B';
+
         System.out.println("Bem vindo a Aula sobre Varíavel");
         System.out.printf("""
                 O que é uma Variavél: É um espaço nomeado na memória de um computador que armazena dados 
@@ -281,16 +294,379 @@ public class Function {
                     double -> Números Racionais Ex: 0.25 (64 bits)
                     float -> Números Racionais Ex: 0.5 (32 bits)
                     boolean -> True ou False
-                    character -> Uma Letra Ex: "A"
+                    char -> Uma Letra Ex: "A"
                 Nós também temos outro tipo de váriavel chamada Wrappers no qual só ultilizadas para criar
                 objetos:
-                    Integer   ->
+                    Integer   -> Wrapper do int
                     String    ->
-                    Double    ->
-                    Float     ->
-                    Boolean   ->
-                    Character ->
-                """);
+                    Double    -> Wrapper do double
+                    Float     -> Wrapper do float
+                    Boolean   -> Wrapper do Boolean
+                    Character -> Wrapper do char
+                Vamos mostrar alguns exemplos:
+                int int_primitivo = 30;
+                Resultado no Print: %d
+                Integer int_wrapper = 50;
+                Resultado no Print: %d
+                String string_wrapper = "Hello World";
+                Resultado no Print: %s
+                double double_primitivo = 5.55;
+                Resultado no Print: %f
+                Double double_wrapper = 6.61;
+                Resultado no Print: %f
+                float float_primitvo = 40.502f;
+                Resultado no Print: %f
+                Float float_wrapper = 41.2f;
+                Resultado no Print: %f
+                boolean bollean_primitivo = false;
+                Resultado no Print: %b
+                Boolean bollean_wrapper = true;
+                Resultado no Print: %b
+                char char_primitivo = 'A';
+                Resultado no Print: %c
+                Character char_wrapper = 'B';
+                Resultado no Print: %c
+                Lembrando que todas as variavéis Wrappers pode ser nulas
+                """,int_primitivo,int_wrapper,string_wrapper,double_primitivo,double_wrapper,float_primitvo,float_wrapper,bollean_primitivo,bollean_wrapper,char_primitivo,char_wrapper);
+        System.out.println("Para voltar para o menu das aulas, Digite 1:");
+        String volta = leitor_texto.nextLine();
+        while (!volta.equals("1")){
+            System.out.println("Não entendi o comando");
+            System.out.println("Para voltar para o menu das aulas, Digite 1:");
+            volta = leitor_texto.nextLine();
+        }
+        ChamarMenuAulas();
     }
-
+    void AulaifElse(){
+        System.out.printf("""
+                O if é comando de estrutura de decisão no qual ele,
+                no qual ele funciona por meio de uma pergunta no q
+                ual ele irá retornar verdadeiro ou falso Ex:
+                if(100 > 50){
+                Executa essa parte de a afirmação for verdadeira
+                } else {
+                Executa essa parte se a afirmação for falsa
+                }
+                Para fazer essa perguntas usamos alguns operadores
+                no quais são:
+                == -> Igual
+                != -> Diferente
+                >  -> Maior que
+                >= -> Maior ou igual
+                <  -> Menor que 
+                <= -> Menor ou igual
+                Se você deseja encadear vários ifs você pode usar
+                else como no exemplo a seguir:
+                Sem Else if
+                if (acao == 1){
+                
+                } else {
+                        if(acao == 2) {
+                            if(acao == 3){
+                            
+                            }
+                            else{
+                            
+                            }
+                        }
+                    }
+                Com Else if
+                if(acao == 1){
+                
+                } else if(acao == 2) {
+                
+                } else if(acao == 3) {
+                
+                } else {
+                
+                }
+                Você ainda pode usar as portas lógicas ou e and
+                no seu if utilizando os seguintes caracteres:
+                && -> And
+                || -> Or
+                Como usar isso:
+                if(condição 1 && condição 2){
+                Executa se as duas condições foram verdadeiras
+                }
+                if(condição 1 || condição 2){
+                Executa se alguma opção for verdadeira ou ambas
+                }
+                Tome cuidado no java quando você vai comparar v
+                ariavéis Wrappers pois você não está comparado
+                um valor primitivo mais sim um objeto, para res
+                olver isso utilize .equals()
+                Integer n1 = 1;
+                Integer n2 = 2;
+                if(n1 == n2){
+                    System.out.println("True");
+                } else {
+                    System.out.println("False");
+                }
+                Saída do código: False
+                if(n1.equals(n2)){
+                    System.out.println("True");
+                } else {
+                    System.out.println("False");
+                }
+                Saída do código: True
+                """);
+        System.out.println("Para voltar para o menu das aulas, Digite 1:");
+        String volta = leitor_texto.nextLine();
+        while (!volta.equals("1")){
+            System.out.println("Não entendi o comando");
+            System.out.println("Para voltar para o menu das aulas, Digite 1:");
+            volta = leitor_texto.nextLine();
+        }
+        ChamarMenuAulas();
+    }
+    void CriadordeSelect(){
+        limparTela();
+        System.out.println("Vamos criar um select");
+        System.out.println("Digite 1 - Para continuar o Criador de Select\n" +
+                "Digite 2 - Para voltar para o menu");
+        String volta = leitor_texto.nextLine();
+        while (!volta.equals("1") && !volta.equals("2")){
+            System.out.println("Não entedi a operação Digite novamente");
+            System.out.println("Digite 1 - Para continuar o Criador de Select\n" +
+                    "Digite 2 - Para voltar para o menu");
+            volta = leitor_texto.nextLine();
+        }
+        if (volta.equals("2")){
+            chamarMenu();
+        }
+        limparTela();
+        Boolean habilita_join = false;
+        String select = "SELECT ";
+        System.out.println("Bem vindo ao Criador de Select");
+        System.out.println("Deseja criar um select com Join ( S / N ):");
+        String join = leitor_texto.nextLine().toLowerCase();
+        while (!join.equals("s") && !join.equals("n")){
+            System.out.println("Desculpa não entedi o comando");
+            System.out.println("Deseja criar um select com Join ( S / N ):");
+            join = leitor_texto.nextLine().toLowerCase();
+        }
+        if (join.equals("s")){
+            habilita_join = true;
+        }
+        if (habilita_join){
+            System.out.println("Qual é nome da tabela ou apelido da sua coluna(atributo):");
+            select += leitor_texto.nextLine();
+            select += ".";
+        }
+        System.out.println("Digite o nome da coluna(atributo) quer irá consultar:");
+        select += leitor_texto.nextLine();
+        System.out.println("Deseja apelidar essa coluna ( S / N ):");
+        String apelido = leitor_texto.nextLine().toLowerCase();
+        while (!apelido.equals("s") && !apelido.equals("n")){
+            System.out.println("Desculpa não entendi");
+            System.out.println("Deseja apelidar essa coluna ( S / N ):");
+            apelido = leitor_texto.nextLine().toLowerCase();
+        }
+        if (apelido.equals("s")){
+            System.out.println("Digite o Apelido da coluna(atributo):");
+            select += " as ";
+            select += leitor_texto.nextLine();
+        }
+        System.out.println("Deseja adicionar mais uma coluna ( S / N ):");
+        String Nova_coluna = leitor_texto.nextLine().toLowerCase();
+        while (!Nova_coluna.equals("s") && !Nova_coluna.equals("n")){
+            System.out.println("Desculpa não entendi o seu comando");
+            System.out.println("Deseja adicionar mais uma coluna ( S / N ):");
+            Nova_coluna = leitor_texto.nextLine().toLowerCase();
+        }
+        while (Nova_coluna.equals("s")){
+            select += ", ";
+            if (habilita_join){
+                System.out.println("Qual é nome da tabela ou apelido da sua coluna(atributo):");
+                select += leitor_texto.nextLine();
+                select += ".";
+            }
+            System.out.println("Digite o nome da coluna(atributo) quer irá consultar:");
+            select += leitor_texto.nextLine();
+            System.out.println("Deseja apelidar essa coluna ( S / N ):");
+            apelido = leitor_texto.nextLine().toLowerCase();
+            while (!apelido.equals("s") && !apelido.equals("n")){
+                System.out.println("Desculpa não entendi");
+                System.out.println("Deseja apelidar essa coluna ( S / N ):");
+                apelido = leitor_texto.nextLine().toLowerCase();
+            }
+            if (apelido.equals("s")){
+                System.out.println("Digite o Apelido da coluna(atributo):");
+                select += " as ";
+                select += leitor_texto.nextLine();
+            }
+            System.out.println("Deseja adicionar mais uma coluna ( S / N ):");
+            Nova_coluna = leitor_texto.nextLine().toLowerCase();
+            while (!Nova_coluna.equals("s") && !Nova_coluna.equals("n")){
+                System.out.println("Desculpa não entendi o seu comando");
+                System.out.println("Deseja adicionar mais uma coluna ( S / N ):");
+                Nova_coluna = leitor_texto.nextLine().toLowerCase();
+            }
+        }
+        select += " FROM ";
+        if (habilita_join){
+            System.out.println("Digite o nome da tabela no qual você puxou os dados:");
+            select += leitor_texto.nextLine();
+            System.out.printf("""
+                    Você colocou algum apelido nas colunas desse tabela
+                    Seu select para conferir: %s
+                    Caso tenha apelidado Digite 1 
+                    Caso não tenha Digite 2""", select);
+            String apelidar_join = leitor_texto.nextLine();
+            while (!apelidar_join.equals("1") && !apelidar_join.equals("2")){
+                System.out.println("Desculpa não entendi o Comando");
+                System.out.printf("""
+                    Você colocou algum apelido nas colunas desse tabela
+                    Seu select para conferir: %s
+                    Caso tenha apelidado Digite 1 
+                    Caso não tenha Digite 2""", select);
+                apelidar_join = leitor_texto.nextLine();
+            }
+            if (apelidar_join.equals("1")){
+                System.out.printf("""
+                        Apelide a tabela como no Select
+                        Seu select como base: %s""",select);
+                select += leitor_texto.nextLine();
+            }
+            System.out.printf("""
+                    Qual join você quer fazer
+                    Digite 1 - Join
+                    Digite 2 - Left Join
+                    Digite 3 - Right Join""");
+            String escolhe_join = leitor_texto.nextLine();
+            while (!escolhe_join.equals("1") && !escolhe_join.equals("2") && !escolhe_join.equals("3")){
+                System.out.println("Desculpa não Entendi");
+                System.out.printf("""
+                    Qual join você quer fazer
+                    Digite 1 - Join
+                    Digite 2 - Left Join
+                    Digite 3 - Right Join""");
+                escolhe_join = leitor_texto.nextLine();
+            }
+            if (escolhe_join.equals("1")){
+                select += " JOIN ";
+            } else if(escolhe_join.equals("2")){
+                select += " LEFT JOIN ";
+            } else if(escolhe_join.equals("3")){
+                select += " RIGHT JOIN ";
+            }
+            System.out.println("Digite o nome da tabela no qual você vai fazer o join:");
+            select += leitor_texto.nextLine();
+            System.out.printf("""
+                    Você colocou algum apelido nas colunas desse tabela
+                    Seu select para conferir: %s
+                    Caso tenha apelidado Digite 1 
+                    Caso não tenha Digite 2""", select);
+            apelidar_join = leitor_texto.nextLine();
+            while (!apelidar_join.equals("1") && !apelidar_join.equals("2")){
+                System.out.println("Desculpa não entendi o Comando");
+                System.out.printf("""
+                    Você colocou algum apelido nas colunas desse tabela
+                    Seu select para conferir: %s
+                    Caso tenha apelidado Digite 1 
+                    Caso não tenha Digite 2""", select);
+                apelidar_join = leitor_texto.nextLine();
+            }
+            if (apelidar_join.equals("1")){
+                System.out.printf("""
+                        Apelide a tabela como no Select
+                        Seu select como base: %s""",select);
+                select += leitor_texto.nextLine();
+            }
+            select += " on ";
+            System.out.println("Digite o nome da tabela ou apelido no qual fica a fk do join:");
+            select += leitor_texto.nextLine();
+            select += ".";
+            System.out.println("Digite o nome da Fk");
+            select += leitor_texto.nextLine();
+            select += " = ";
+            System.out.println("Digite o nome da tabela ou apelido no qual fica o id do join:");
+            select += leitor_texto.nextLine();
+            select += ".";
+            System.out.println("Digite o nome da id");
+            select += leitor_texto.nextLine();
+            System.out.println("Deseja fazer mais um Join ( S / N ):");
+            String repetir_join = leitor_texto.nextLine().toLowerCase();
+            while (!repetir_join.equals("s") && !repetir_join.equals("n")){
+                System.out.println("Desculpa não entendi");
+                System.out.println("Deseja fazer mais um Join ( S / N ):");
+                repetir_join = leitor_texto.nextLine().toLowerCase();
+            }
+            while (repetir_join.equals("s")){
+                System.out.printf("""
+                    Qual join você quer fazer
+                    Digite 1 - Join
+                    Digite 2 - Left Join
+                    Digite 3 - Right Join
+                    """);
+                escolhe_join = leitor_texto.nextLine();
+                while (!escolhe_join.equals("1") && !escolhe_join.equals("2") && !escolhe_join.equals("3")){
+                    System.out.println("Desculpa não Entendi");
+                    System.out.printf("""
+                    Qual join você quer fazer
+                    Digite 1 - Join
+                    Digite 2 - Left Join
+                    Digite 3 - Right Join
+                    """);
+                    escolhe_join = leitor_texto.nextLine();
+                }
+                if (escolhe_join.equals("1")){
+                    select += " JOIN ";
+                } else if(escolhe_join.equals("2")){
+                    select += " LEFT JOIN ";
+                } else if(escolhe_join.equals("3")){
+                    select += " RIGHT JOIN ";
+                }
+                System.out.println("Digite o nome da tabela no qual você vai fazer o join:");
+                select += leitor_texto.nextLine();
+                System.out.printf("""
+                    Você colocou algum apelido nas colunas desse tabela
+                    Seu select para conferir: %s
+                    Caso tenha apelidado Digite 1 
+                    Caso não tenha Digite 2
+                    """, select);
+                apelidar_join = leitor_texto.nextLine();
+                while (!apelidar_join.equals("1") && !apelidar_join.equals("2")){
+                    System.out.println("Desculpa não entendi o Comando");
+                    System.out.printf("""
+                    Você colocou algum apelido nas colunas desse tabela
+                    Seu select para conferir: %s
+                    Caso tenha apelidado Digite 1 
+                    Caso não tenha Digite 2
+                    """, select);
+                    apelidar_join = leitor_texto.nextLine();
+                }
+                if (apelidar_join.equals("1")){
+                    System.out.printf("""
+                        Apelide a tabela como no Select
+                        Seu select como base: %s
+                        """,select);
+                    select += leitor_texto.nextLine();
+                }
+                select += " on ";
+                System.out.println("Digite o nome da tabela ou apelido no qual fica a fk do join:");
+                select += leitor_texto.nextLine();
+                select += ".";
+                System.out.println("Digite o nome da Fk");
+                select += leitor_texto.nextLine();
+                select += " = ";
+                System.out.println("Digite o nome da tabela ou apelido no qual fica o id do join:");
+                select += leitor_texto.nextLine();
+                select += ".";
+                System.out.println("Digite o nome da id");
+                select += leitor_texto.nextLine();
+                System.out.println("Deseja fazer mais um Join ( S / N ):");
+                repetir_join = leitor_texto.nextLine().toLowerCase();
+                while (!repetir_join.equals("s") && !repetir_join.equals("n")){
+                    System.out.println("Desculpa não entendi");
+                    System.out.println("Deseja fazer mais um Join ( S / N ):");
+                    repetir_join = leitor_texto.nextLine().toLowerCase();
+                }
+            }
+        } else {
+            System.out.println("Digite o nome da tabela que você puxou os dados:");
+            select += leitor_texto.nextLine();
+        }
+        System.out.println(select);
+    }
 }
