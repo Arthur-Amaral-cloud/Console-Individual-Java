@@ -511,7 +511,7 @@ public class Function {
                     Você colocou algum apelido nas colunas desse tabela
                     Seu select para conferir: %s
                     Caso tenha apelidado Digite 1 
-                    Caso não tenha Digite 2""", select);
+                    Caso não tenha Digite \n""", select);
             String apelidar_join = leitor_texto.nextLine();
             while (!apelidar_join.equals("1") && !apelidar_join.equals("2")){
                 System.out.println("Desculpa não entendi o Comando");
@@ -519,20 +519,20 @@ public class Function {
                     Você colocou algum apelido nas colunas desse tabela
                     Seu select para conferir: %s
                     Caso tenha apelidado Digite 1 
-                    Caso não tenha Digite 2""", select);
+                    Caso não tenha Digite 2\n""", select);
                 apelidar_join = leitor_texto.nextLine();
             }
             if (apelidar_join.equals("1")){
                 System.out.printf("""
                         Apelide a tabela como no Select
-                        Seu select como base: %s""",select);
+                        Seu select como base: %s\n""",select);
                 select += leitor_texto.nextLine();
             }
             System.out.printf("""
                     Qual join você quer fazer
                     Digite 1 - Join
                     Digite 2 - Left Join
-                    Digite 3 - Right Join""");
+                    Digite 3 - Right Join \n""");
             String escolhe_join = leitor_texto.nextLine();
             while (!escolhe_join.equals("1") && !escolhe_join.equals("2") && !escolhe_join.equals("3")){
                 System.out.println("Desculpa não Entendi");
@@ -540,7 +540,7 @@ public class Function {
                     Qual join você quer fazer
                     Digite 1 - Join
                     Digite 2 - Left Join
-                    Digite 3 - Right Join""");
+                    Digite 3 - Right Join \n""");
                 escolhe_join = leitor_texto.nextLine();
             }
             if (escolhe_join.equals("1")){
@@ -556,7 +556,7 @@ public class Function {
                     Você colocou algum apelido nas colunas desse tabela
                     Seu select para conferir: %s
                     Caso tenha apelidado Digite 1 
-                    Caso não tenha Digite 2""", select);
+                    Caso não tenha Digite 2 \n""", select);
             apelidar_join = leitor_texto.nextLine();
             while (!apelidar_join.equals("1") && !apelidar_join.equals("2")){
                 System.out.println("Desculpa não entendi o Comando");
@@ -564,13 +564,13 @@ public class Function {
                     Você colocou algum apelido nas colunas desse tabela
                     Seu select para conferir: %s
                     Caso tenha apelidado Digite 1 
-                    Caso não tenha Digite 2""", select);
+                    Caso não tenha Digite 2 \n""", select);
                 apelidar_join = leitor_texto.nextLine();
             }
             if (apelidar_join.equals("1")){
                 System.out.printf("""
                         Apelide a tabela como no Select
-                        Seu select como base: %s""",select);
+                        Seu select como base: %s \n""",select);
                 select += leitor_texto.nextLine();
             }
             select += " on ";
@@ -597,7 +597,7 @@ public class Function {
                     Qual join você quer fazer
                     Digite 1 - Join
                     Digite 2 - Left Join
-                    Digite 3 - Right Join
+                    Digite 3 - Right Join \n
                     """);
                 escolhe_join = leitor_texto.nextLine();
                 while (!escolhe_join.equals("1") && !escolhe_join.equals("2") && !escolhe_join.equals("3")){
@@ -606,7 +606,7 @@ public class Function {
                     Qual join você quer fazer
                     Digite 1 - Join
                     Digite 2 - Left Join
-                    Digite 3 - Right Join
+                    Digite 3 - Right Join \n
                     """);
                     escolhe_join = leitor_texto.nextLine();
                 }
@@ -623,7 +623,7 @@ public class Function {
                     Você colocou algum apelido nas colunas desse tabela
                     Seu select para conferir: %s
                     Caso tenha apelidado Digite 1 
-                    Caso não tenha Digite 2
+                    Caso não tenha Digite 2 \n
                     """, select);
                 apelidar_join = leitor_texto.nextLine();
                 while (!apelidar_join.equals("1") && !apelidar_join.equals("2")){
@@ -632,14 +632,14 @@ public class Function {
                     Você colocou algum apelido nas colunas desse tabela
                     Seu select para conferir: %s
                     Caso tenha apelidado Digite 1 
-                    Caso não tenha Digite 2
+                    Caso não tenha Digite 2 \n
                     """, select);
                     apelidar_join = leitor_texto.nextLine();
                 }
                 if (apelidar_join.equals("1")){
                     System.out.printf("""
                         Apelide a tabela como no Select
-                        Seu select como base: %s
+                        Seu select como base: %s \n
                         """,select);
                     select += leitor_texto.nextLine();
                 }
@@ -667,6 +667,38 @@ public class Function {
             System.out.println("Digite o nome da tabela que você puxou os dados:");
             select += leitor_texto.nextLine();
         }
+        System.out.println("Quer fazer seu where ( S / N ):");
+        String where_habilita = leitor_texto.nextLine().toLowerCase();
+        while (!where_habilita.equals("s") && !where_habilita.equals("n")){
+            System.out.println("Não entendi o seu comando");
+            System.out.println("Quer fazer seu where ( S / N ):");
+        }
+        if (where_habilita.equals("s")){
+            System.out.println("Faça seu Where ou Order by não precisa colocar o ;:");
+            select += leitor_texto.nextLine();
+        }
+        select += ";";
+        System.out.println("Seu select:");
         System.out.println(select);
+    }
+    void CriarSorteio(){
+        System.out.println("Bem-vindo ao Sorteio\n" +
+                "Para cadastrar um valor - Digite 1\n" +
+                "Para começar o sorteio  - Digite 2\n" +
+                "Para voltar ao menu     - Digite 3");
+        String back_to_menu = leitor_texto.nextLine();
+        while (!back_to_menu.equals("1") && !back_to_menu.equals("2") && !back_to_menu.equals("3")){
+            limparTela();
+            System.out.println("Não entendi o comando");
+            System.out.println("Bem-vindo ao Sorteio\n" +
+                    "Para cadastrar um valor - Digite 1\n" +
+                    "Para começar o sorteio  - Digite 2\n" +
+                    "Para voltar ao menu     - Digite 3");
+            back_to_menu = leitor_texto.nextLine();
+        }
+        if (back_to_menu.equals("3")){
+            chamarMenu();
+        }
+        
     }
 }
