@@ -1,6 +1,9 @@
 package school.sptech;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Function {
     Scanner leitor = new Scanner(System.in);
@@ -34,7 +37,7 @@ public class Function {
         } else if (acao == 3) {
             CriadordeSelect();
         } else if (acao == 4) {
-
+            CriarSorteio();
         } else if (acao == 5) {
 
         } else if (acao == 6) {
@@ -667,38 +670,109 @@ public class Function {
             System.out.println("Digite o nome da tabela que você puxou os dados:");
             select += leitor_texto.nextLine();
         }
-        System.out.println("Quer fazer seu where ( S / N ):");
-        String where_habilita = leitor_texto.nextLine().toLowerCase();
-        while (!where_habilita.equals("s") && !where_habilita.equals("n")){
-            System.out.println("Não entendi o seu comando");
-            System.out.println("Quer fazer seu where ( S / N ):");
-        }
-        if (where_habilita.equals("s")){
-            System.out.println("Faça seu Where ou Order by não precisa colocar o ;:");
-            select += leitor_texto.nextLine();
-        }
         select += ";";
         System.out.println("Seu select:");
         System.out.println(select);
     }
     void CriarSorteio(){
-        System.out.println("Bem-vindo ao Sorteio\n" +
-                "Para cadastrar um valor - Digite 1\n" +
-                "Para começar o sorteio  - Digite 2\n" +
-                "Para voltar ao menu     - Digite 3");
-        String back_to_menu = leitor_texto.nextLine();
-        while (!back_to_menu.equals("1") && !back_to_menu.equals("2") && !back_to_menu.equals("3")){
+        limparTela();
+        System.out.println("Bem vindo ao Sorteio\n" +
+                "Digite 1 - Para configurar o sorteio\n" +
+                "Digite 2 - Para voltar para o menu");
+        String operacao = leitor_texto.nextLine();
+        while (!operacao.equals("1") && !operacao.equals("2")){
             limparTela();
             System.out.println("Não entendi o comando");
-            System.out.println("Bem-vindo ao Sorteio\n" +
-                    "Para cadastrar um valor - Digite 1\n" +
-                    "Para começar o sorteio  - Digite 2\n" +
-                    "Para voltar ao menu     - Digite 3");
-            back_to_menu = leitor_texto.nextLine();
+            System.out.println("Bem vindo ao Sorteio\n" +
+                    "Digite 1 - Para configurar o sorteio\n" +
+                    "Digite 2 - Para voltar para o menu");
+            operacao = leitor_texto.nextLine();
         }
-        if (back_to_menu.equals("3")){
+        if (operacao.equals("2")){
             chamarMenu();
         }
-        
+        List<String> sorteio = new ArrayList<>();
+        limparTela();
+        while (true){
+            limparTela();
+            System.out.println("Configure o seu sorteio\n" +
+                    "Digite 1 - Para inserir uma entrada no sorteio\n" +
+                    "Digite 2 - Para editar uma entrada\n" +
+                    "Digite 3 - Para remover uma entrada\n" +
+                    "Digite 4 - Para começar o sorteio");
+            System.out.println("Entradas registradas:");
+            for (int i = 0; i < sorteio.size(); i++) {
+                System.out.println(i+1 + "º - " + sorteio.get(i));
+            }
+            System.out.println("Digite a operação: ");
+            String acao = leitor_texto.nextLine();
+            while (!acao.equals("1") && !acao.equals("2") && !acao.equals("3") && !acao.equals("4")){
+                System.out.println("Operação Invalída");
+                System.out.println("Digite a operação: ");
+                acao = leitor_texto.nextLine();
+            }
+            if (acao.equals("1")){
+                limparTela();
+                System.out.println("Digite o nome da Entrada: ");
+                String valor_cadastrado = leitor_texto.nextLine();
+                sorteio.add(valor_cadastrado);
+            } else if (acao.equals("2")){
+                limparTela();
+                System.out.println("Editar a Entrada");
+                for (int i = 0; i < sorteio.size(); i++) {
+                    System.out.println(i+1 + "º - " + sorteio.get(i));
+                }
+                System.out.println("Digite o número da entrada a ser editada: ");
+                Integer num_entrada_edit = leitor.nextInt();
+                while (num_entrada_edit < 1 && num_entrada_edit > sorteio.size()){
+                    System.out.println("Entrada invalída");
+                    System.out.println("Digite o número da entrada a ser editada: ");
+                    num_entrada_edit = leitor.nextInt();
+                }
+                System.out.println("Valor antigo: " + sorteio.get(num_entrada_edit-1));
+                System.out.println("Valor Novo: ");
+                String new_value_edit = leitor_texto.nextLine();
+                sorteio.set(num_entrada_edit - 1 , new_value_edit);
+            } else if (acao.equals("3")) {
+                limparTela();
+                System.out.println("Remover a Entrada");
+                for (int i = 0; i < sorteio.size(); i++) {
+                    System.out.println(i+1 + "º - " + sorteio.get(i));
+                }
+                System.out.println("Digite o número da entrada a ser removida: ");
+                Integer num_entrada_remove = leitor.nextInt();
+                while (num_entrada_remove < 1 && num_entrada_remove > sorteio.size()){
+                    System.out.println("Entrada invalída");
+                    System.out.println("Digite o número da entrada a ser removida: ");
+                    num_entrada_remove = leitor.nextInt();
+                }
+                sorteio.remove(num_entrada_remove - 1);
+            } else if (acao.equals("4") && sorteio.size() > 0) {
+                limparTela();
+                Integer num_sorteio = ThreadLocalRandom.current().nextInt(0,sorteio.size());
+                System.out.println("Resultado: " + sorteio.get(num_sorteio));
+                System.out.println("Digite 1 - Para configurar outro sorteio\n" +
+                        "Digite 2 - Para configurar outro sorteio com as mesmas entradas\n" +
+                        "Digite 3 - Para voltar para o menu");
+                System.out.println("Digite sua operação: ");
+                String finish_sorteio = leitor_texto.nextLine();
+                while (!finish_sorteio.equals("1") && !finish_sorteio.equals("2") && !finish_sorteio.equals("3")){
+                    System.out.println("Operação Invalída");
+                    System.out.println("Digite sua operação:");
+                     finish_sorteio = leitor_texto.nextLine();
+                }
+                if (finish_sorteio.equals("1")){
+                    for (int i = sorteio.size() - 1; i >= 0; i--) {
+                        sorteio.remove(i);
+                    }
+                }
+                if (finish_sorteio.equals("3")){
+                    chamarMenu();
+                }
+            } else if (acao.equals("4") && sorteio.size() == 0){
+                System.out.println("Adicione uma Entrada");
+            }
+
+        }
     }
 }
