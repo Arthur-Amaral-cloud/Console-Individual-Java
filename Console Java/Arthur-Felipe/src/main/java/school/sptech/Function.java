@@ -46,6 +46,7 @@ public class Function {
         } else if (acao == 7) {
             limparTela();
             EncerrarConsole();
+            System.exit(0);
         }
     }
     void limparTela(){
@@ -260,9 +261,9 @@ public class Function {
         } else if (acao == 3) {
             AulaWhilefor();
         } else if (acao == 4) {
-
+            AulaVetor();
         } else if (acao == 5) {
-
+            AulaListas();
         } else if (acao == 6) {
 
         } else if (acao == 7) {
@@ -861,8 +862,136 @@ public class Function {
     }
     void AulaVetor(){
         limparTela();
+        String[] vetorTexto = new String[10];
         System.out.println("""
                 O vetor no java é um pouco diferente do que conhecemos no JavaScript
-                o vetor no java tem um tamanho imutável no qual você """);
+                o vetor no java tem um tamanho imutável no qual você define assim qu
+                e cria o vetor. Para nós criarmos um vetor em java usamos a seguinte
+                sintaxe:
+                String[] nomeDaVariavel = new String[tamanho do vetor];
+                Assim que você cria o vetor ele vem da seguinte forma:
+                [null,null,null,null,null,null] - Caso você utilize uma váriavel wrapper
+                Se você utilizar um varíavel primitiva você pode obter os seguintes resu
+                ltados:
+                [0,0,0,0,0] - int
+                [0.0,0.0,0.0,0.0] - double
+                [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ] - char
+                Se você quiser mostrar o seu vetor inteiro ultilize o comando:
+                System.out.Println(Arrays.toString(nomeDoVetor))
+                Colocar um elemento em uma posição:
+                nomeDoVetor[posição] = valor;
+                Consultar um número em uma posição do vetor
+                nomeDoVetor[posição]
+                Caso queira consultar o tamanho do vetor
+                nomeDoVetor.length""");
+        System.out.println("Digite algo para voltar para o menu:");
+        String back_to_menu = leitor_texto.nextLine();
+        ChamarMenuAulas();
+    }
+    void AulaListas(){
+        limparTela();
+        System.out.println("""
+                =======================================================
+                |                   Aula 5 - Listas                   |
+                =======================================================
+                
+                Bem-vindo à aula sobre Listas! A Lista é uma das estruturas de dados
+                mais úteis e flexíveis em Java.
+                
+                Pense nela como um "vetor superpoderoso". Enquanto um vetor (array)
+                tem um tamanho fixo que você define na criação, uma Lista pode
+                crescer e encolher dinamicamente.
+                
+                A implementação mais comum da Lista é o `ArrayList`.
+                
+                -------------------------------------------------------
+                1. CRIANDO UMA LISTA
+                -------------------------------------------------------
+                
+                Criando uma lista de Strings vazia.
+                Por padrão, ela reserva um espaço inicial (geralmente para 10 itens).
+                List<String> frutas = new ArrayList<>();
+                
+                Criando uma lista já com valores iniciais.
+                List<String> frutasComValores = new ArrayList<>(List.of("Abacate","Abacaxi","Melão"));
+                
+                -------------------------------------------------------
+                2. ADICIONANDO ELEMENTOS
+                -------------------------------------------------------
+                
+                frutas.add(elemento) -> Adiciona o elemento no final da lista.
+                frutas.add("Morango");
+                frutas.add("Goiaba");
+                Lista 'frutas' agora é: [Morango, Goiaba]
+                
+                Se a capacidade interna da lista for atingida, o Java automaticamente
+                dobra o tamanho dela para você. Você não precisa se preocupar!
+                
+                frutas.add(indice, elemento) -> Adiciona em uma posição específica.
+                frutas.add(1, "Kiwi"); // Adiciona "Kiwi" na posição 1
+                Lista 'frutas' agora é: [Morango, Kiwi, Goiaba]
+                
+                frutas.addAll(outraLista) -> Adiciona todos os itens de outra lista.
+                frutas.addAll(frutasComValores);
+                Lista 'frutas' agora é: [Morango, Kiwi, Goiaba, Abacate, Abacaxi, Melão]
+                
+                frutas.addFirst(elemento) -> Adiciona um elemento na primeira posição (índice 0).
+                frutas.addFirst("Jabuticaba");
+                
+                -------------------------------------------------------
+                3. ACESSANDO E MODIFICANDO ELEMENTOS
+                -------------------------------------------------------
+
+                frutas.get(indice) -> Pega o valor de uma posição (similar ao vetor[indice]).
+                System.out.println("A fruta na posição 2 é: " + frutas.get(2)); // Saída: Goiaba
+                
+                frutas.set(indice, novoElemento) -> Substitui o valor em uma posição.
+                frutas.set(2, "Cupuaçu"); // Troca "Goiaba" por "Cupuaçu"
+                Lista 'frutas' agora contém "Cupuaçu" na posição 2.
+                
+                frutas.size() -> Retorna o número de elementos na lista (similar ao vetor.length).
+                System.out.println("A lista tem " + frutas.size() + " elementos.");
+
+                -------------------------------------------------------
+                4. REMOVENDO ELEMENTOS
+                -------------------------------------------------------
+                
+                frutas.remove(indice) -> Remove o elemento de uma posição específica.
+                frutas.remove(0); // Remove "Jabuticaba"
+                
+                frutas.remove(objeto) -> Remove a primeira ocorrência do valor especificado.
+                frutas.remove("Kiwi"); // Procura e remove o texto "Kiwi"
+                
+                frutas.removeAll(outraLista) -> Remove todos os elementos que também estão na outra lista.
+                
+                frutas.removeFirst() / .removeLast() -> Remove o primeiro ou o último elemento.
+                
+                frutas.clear() -> Remove TODOS os elementos da lista, deixando-a vazia.
+                frutas.clear();
+                Lista 'frutas' agora é: []
+                -------------------------------------------------------
+                """);
+        System.out.println("Digite algo para voltar para o menu:");
+        String back_to_menu = leitor_texto.nextLine();
+        ChamarMenuAulas();
+    }
+    void aulaOperacaoMath(){
+        limparTela();
+        System.out.println("""
+                =======================================================
+                |                Aula 6 - Operações Math              |
+                =======================================================
+                Bem-vindo a aula de operações math, no java existem algumas limitações
+                quando nós falamos de operações matemáticas, no java não temos as 
+                operações de potênciação e nem de radiciação, para conseguir fazer
+                essas contas podemos utilizar a biblioteca Math no qual habilita
+                algumas funções matématícas como
+                .pow(base,expoente) -> Exponenciação
+                .sqrt(radicando) -> Raiz Quadrado
+                -------------------------------------------------------
+                1. Tirando a abstração do .pow
+                -------------------------------------------------------
+                O .pow() ou exponeciação consiste em uma repetição 
+                """);
     }
 }
